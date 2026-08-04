@@ -1,0 +1,31 @@
+# Tristarnex
+
+> Tristarnex is a cybersecurity firm delivering enterprise-grade threat detection, penetration testing, vulnerability management, incident response, and security awareness training for businesses of every size. AI-assisted. Human-led.
+
+## Services
+
+- Threat Detection & Response — Real-time endpoint monitoring with AI-assisted triage, critical threats isolated in under 2 seconds
+- Penetration Testing — Network, web application, social engineering, and red team assessments
+- Security Assessment — Complete security posture review, gap analysis, and prioritised remediation
+- Vulnerability Management — Continuous CVE tracking scored by real-world exploitability
+- Security Awareness Training — Phishing simulations and hands-on workshops
+- Incident Response — Guaranteed response time, dedicated responder, full containment and forensics
+
+## Key Facts
+
+- Founded: 2026
+- Monitoring: 24/7 global monitoring capability
+- Detection speed: <2 second AI threat triage
+- Threat intelligence: 1.2M+ threat indicators from 34 global feeds
+- Response SLA: Detection-to-containment 94% within 15 minutes
+
+## Contact
+
+- Email: info@tristarnex.com
+- Response time: Within 4 hours on business days
+
+## Pages
+
+- [Homepage](https://tristarnex.com/)
+- [Privacy Policy](https://tristarnex.com/privacy)
+- [Terms of Service](https://tristarnex.com/terms)
