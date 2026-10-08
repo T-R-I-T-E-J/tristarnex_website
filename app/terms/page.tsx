@@ -1,11 +1,9 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-
+import { PageHero } from "@/components/PageHero";
 export const metadata: Metadata = {
-  title: "Terms of Service | Tristarnex",
-  description: "Terms and conditions governing the use of Tristarnex services.",
+  title: "Terms of Service",
+  alternates: { canonical: "/terms" },
 };
-
 const SECTIONS = [
   {
     title: "1. About These Terms",
@@ -100,57 +98,31 @@ const SECTIONS = [
   },
 ];
 
-export default function TermsOfService() {
+export default function Legal() {
   return (
-    <main className="min-h-screen bg-brand-bg text-brand-text font-body">
-      {/* Nav bar */}
-      <div className="border-b border-brand-border px-12 h-16 flex items-center justify-between">
-        <Link href="/" className="font-display text-[20px] font-extrabold tracking-widest uppercase">
-          Tristar<span className="text-brand-cyan">nex</span>
-        </Link>
-        <Link href="/" className="font-mono text-[11px] tracking-[0.12em] uppercase text-brand-text-muted hover:text-brand-cyan transition-colors">
-          ← Back to site
-        </Link>
-      </div>
-
-      <div className="max-w-[780px] mx-auto px-8 py-20">
-        <div className="flex items-center gap-[10px] font-mono text-[11px] tracking-[0.2em] uppercase text-brand-cyan mb-4">
-          <span className="block w-6 h-px bg-brand-cyan" />
-          Legal
-        </div>
-        <h1 className="font-display text-[clamp(32px,4vw,52px)] font-extrabold uppercase tracking-tight leading-none mb-3">
-          Terms of Service
-        </h1>
-        <p className="font-mono text-[11px] text-brand-text-muted mb-12">
-          Last updated: March 2026
-        </p>
-
-        <div className="flex flex-col gap-10">
-          {SECTIONS.map((s, i) => (
-            <div key={i}>
-              <h2 className="font-display text-[17px] font-bold uppercase tracking-tight text-brand-text mb-4">
-                {s.title}
-              </h2>
-              <div className="flex flex-col gap-3">
-                {s.body.map((para, j) => (
-                  <p key={j} className="text-[14px] font-light leading-[1.9] text-brand-text-muted">
-                    {para}
-                  </p>
-                ))}
-              </div>
-            </div>
+    <>
+      <PageHero
+        eyebrow="TRISTARNEX / LEGAL"
+        title="Terms of Service"
+        description="Terms governing use of the Tristarnex website and services."
+      />
+      <section className="detail-section">
+        <div className="container legal-content">
+          <p className="mono">Existing policy · Last updated March 2026</p>
+          {SECTIONS.map((s) => (
+            <article key={s.title}>
+              <h2>{s.title}</h2>
+              {s.body.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </article>
           ))}
-        </div>
-
-        <div className="mt-16 pt-8 border-t border-brand-border">
-          <p className="font-mono text-[11px] text-brand-text-muted">
-            Questions about these terms? Contact us at{" "}
-            <a href="mailto:info@tristarnex.com" className="text-brand-cyan hover:underline">
-              info@tristarnex.com
-            </a>
+          <p>
+            Questions?{" "}
+            <a href="mailto:info@tristarnex.com">info@tristarnex.com</a>
           </p>
         </div>
-      </div>
-    </main>
+      </section>
+    </>
   );
 }

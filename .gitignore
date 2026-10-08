@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# User-provided confidential product references and local QA artifacts
+/dox/
+/.local-review/

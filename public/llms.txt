@@ -1,31 +1,28 @@
-# Tristarnex
+# Tristarnex Private Limited
 
-> Tristarnex is a cybersecurity firm delivering enterprise-grade threat detection, penetration testing, vulnerability management, incident response, and security awareness training for businesses of every size. AI-assisted. Human-led.
+> Tristarnex is building ShieldMSP, a constrained security decision and response layer for managed service providers protecting SMBs. Founded in 2026. ShieldMSP is in MVP development.
 
-## Services
+## Product design
+- Detection remains with the existing security provider.
+- Deterministic Sigma rules are the primary decision layer.
+- AI provides context and explanations, with no independent execution authority.
+- The safety gate enforces action policy, asset criticality, tenant validation, and authorization.
+- Shadow Mode evaluates decisions without dispatching response commands.
+- Provider response state is verified; decisions and outcomes are audited.
 
-- Threat Detection & Response — Real-time endpoint monitoring with AI-assisted triage, critical threats isolated in under 2 seconds
-- Penetration Testing — Network, web application, social engineering, and red team assessments
-- Security Assessment — Complete security posture review, gap analysis, and prioritised remediation
-- Vulnerability Management — Continuous CVE tracking scored by real-world exploitability
-- Security Awareness Training — Phishing simulations and hands-on workshops
-- Incident Response — Guaranteed response time, dedicated responder, full containment and forensics
-
-## Key Facts
-
-- Founded: 2026
-- Monitoring: 24/7 global monitoring capability
-- Detection speed: <2 second AI threat triage
-- Threat intelligence: 1.2M+ threat indicators from 34 global feeds
-- Response SLA: Detection-to-containment 94% within 15 minutes
-
-## Contact
-
-- Email: info@tristarnex.com
-- Response time: Within 4 hours on business days
+## Scope
+- Microsoft Defender is the primary MVP integration focus.
+- SentinelOne, PSA and RMM connectors are planned and require readiness validation.
+- Identity and email containment, custom agents, and broader Linux coverage are future scope.
+- This website demonstrates the intended architecture with clearly labeled sample data. It does not claim production availability, certifications, customer counts, or verified performance metrics.
 
 ## Pages
+- [Platform](https://tristarnex.com/platform)
+- [Safety](https://tristarnex.com/safety)
+- [Integrations](https://tristarnex.com/integrations)
+- [Company](https://tristarnex.com/company)
+- [Resources](https://tristarnex.com/resources)
+- [Contact](https://tristarnex.com/contact)
 
-- [Homepage](https://tristarnex.com/)
-- [Privacy Policy](https://tristarnex.com/privacy)
-- [Terms of Service](https://tristarnex.com/terms)
+## Contact
+- info@tristarnex.com

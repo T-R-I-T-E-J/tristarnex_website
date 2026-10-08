@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tristarnex / ShieldMSP
 
-## Getting Started
+A complete Next.js marketing-site redesign around ShieldMSP's constrained security decision and response architecture. The supplied Tristarnex logo, navy/teal palette, custom pipeline diagrams, and interactive incident walkthrough define the visual identity.
 
-First, run the development server:
+## Development
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pages
 
-## Learn More
+- `/` — company and product introduction with interactive sample incident
+- `/platform` — architecture and MSP workflow
+- `/safety` — safety gate, human approval, Shadow Mode and verified response
+- `/integrations` — MVP focus and development roadmap
+- `/company` — company, founder and principles
+- `/resources` — product explainers and FAQ
+- `/contact` — inquiry form using the existing Formspree endpoint
+- `/privacy`, `/terms` — restyled existing legal wording
 
-To learn more about Next.js, take a look at the following resources:
+Previous services, pricing and blog routes redirect to their new destinations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Important boundaries
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ShieldMSP is presented as in MVP development. The product tour uses fictional data and never connects to security-provider APIs. No fabricated customer metrics, certification claims or testimonials are published.
 
-## Deploy on Vercel
+See [redesign notes](docs/redesign-notes.md) for source conflicts, scope decisions and pre-launch content review items. Confidential product references in `dox/` stay outside public assets and source control.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Validation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Production build and TypeScript validation passed. ESLint passed on the changed implementation. Browser review covered desktop/mobile layouts, mobile navigation, simulated containment, critical-asset escalation, uncertain-activity escalation, Shadow Mode, and required contact fields. Route checks covered all new pages, sitemap, robots, icon, social card and legacy redirects. Real form delivery was not tested with an external submission.
+
+The existing legal wording and the receiving Formspree account need owner review before public launch.
