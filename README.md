@@ -24,7 +24,7 @@ npm start
 - `/integrations` — MVP focus and development roadmap
 - `/company` — company, founder and principles
 - `/resources` — product explainers and FAQ
-- `/contact` — inquiry form using the existing Formspree endpoint
+- `/contact` — inquiry form delivered through the server-side Resend API
 - `/privacy`, `/terms` — restyled existing legal wording
 
 Previous services, pricing and blog routes redirect to their new destinations.
@@ -39,4 +39,12 @@ See [redesign notes](docs/redesign-notes.md) for source conflicts, scope decisio
 
 Production build and TypeScript validation passed. ESLint passed on the changed implementation. Browser review covered desktop/mobile layouts, mobile navigation, simulated containment, critical-asset escalation, uncertain-activity escalation, Shadow Mode, and required contact fields. Route checks covered all new pages, sitemap, robots, icon, social card and legacy redirects. Real form delivery was not tested with an external submission.
 
-The existing legal wording and the receiving Formspree account need owner review before public launch.
+The existing legal wording needs owner review before public launch.
+
+## Contact email setup
+
+Copy `.env.example` to `.env.local`, then set `RESEND_API_KEY`, `CONTACT_EMAIL_FROM`, and `CONTACT_EMAIL_TO`. The sender domain must be verified in that Resend account. The recipient is `info@tristarnex.com`; the visitor’s email is used as Reply-To, so your team can reply directly.
+
+For production, add these three variables in your hosting provider’s environment settings and redeploy. Never commit the real key or prefix it with `NEXT_PUBLIC_`. The API validates fields, limits request size, checks browser origin, ignores honeypot submissions, and reuses a provider idempotency key on retries. Apply hosting-level rate limits to `/api/contact` before broad public exposure.
+
+Run `node scripts/test-contact.mjs` to check server validation, mail routing, HTML escaping, duplicate prevention and provider failures without sending real email.

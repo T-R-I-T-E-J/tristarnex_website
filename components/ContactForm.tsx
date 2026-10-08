@@ -1,24 +1,35 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 export function ContactForm() {
+  const submissionId = useRef<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === "sending") return;
     const form = e.currentTarget;
     const data = new FormData(form);
+    submissionId.current ??= crypto.randomUUID();
     setStatus("sending");
+    setErrorMessage("");
     try {
-      const response = await fetch("https://formspree.io/f/mjgapzyo", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        body: JSON.stringify({ ...Object.fromEntries(data), submissionId: submissionId.current }),
+        headers: { "Content-Type": "application/json" },
         signal: AbortSignal.timeout(15000),
       });
-      if (!response.ok) throw new Error("Submission failed");
+      const result = await response.json();
+      if (!response.ok || result.success !== true) {
+        setErrorMessage(result.error || "We couldn’t send your inquiry. Please try again.");
+        setStatus("error");
+        return;
+      }
       setStatus("success");
       form.reset();
+      submissionId.current = null;
     } catch {
       setStatus("error");
     }
@@ -76,7 +87,6 @@ export function ContactForm() {
           maxLength={5000}
         />
       </label>
-      <input type="hidden" name="_subject" value="ShieldMSP website inquiry" />
       <input
         type="text"
         name="_gotcha"
@@ -93,8 +103,8 @@ export function ContactForm() {
         {status === "sending" ? "Sending your inquiry…" : "Send inquiry"}
       </button>
       <p className="form-note">
-        Your inquiry is sent through Formspree. Please avoid sharing credentials
-        or sensitive incident data. <a href="/privacy">Privacy information</a>
+        Please avoid sharing credentials or sensitive incident data.{" "}
+        <a href="/privacy">Privacy information</a>
       </p>
       {status === "success" ? (
         <p className="form-message" role="status">
@@ -102,7 +112,8 @@ export function ContactForm() {
         </p>
       ) : status === "error" ? (
         <p className="form-message error" role="alert">
-          We couldn’t send your inquiry. Please try again or email{" "}
+          {errorMessage || "We couldn’t confirm your inquiry was sent. Please try again."}{" "}
+          You can also email{" "}
           <a href="mailto:info@tristarnex.com">info@tristarnex.com</a>.
         </p>
       ) : null}

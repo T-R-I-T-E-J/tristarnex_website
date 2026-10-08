@@ -22,7 +22,7 @@ The design emphasizes validated ingestion, normalization, deduplication, determi
 
 Home, platform, safety, integrations, company, resources, contact, privacy and terms. Previous service/pricing/blog URLs redirect to the appropriate new pages. Metadata, sitemap, social card and llms.txt use the new positioning.
 
-The contact form retains the previous site's Formspree endpoint (`mjgapzyo`) and supports validation, pending, success, error and timeout states. No real test inquiry was sent. Confirm the receiving account and delivery before public launch.
+The contact form now uses a server-side Resend endpoint with validation, pending, success, error and timeout states. The recipient is `info@tristarnex.com`; the sender must use a domain verified in the configured Resend account. Credentials remain in environment configuration outside source control. Confirm inbox delivery before public launch.
 
 The existing privacy and terms wording is preserved and restyled. It contains UK-specific company/jurisdiction and service assumptions from the old site. Company/legal owners need to approve updated text before publication; this redesign does not silently rewrite legal terms.
 
